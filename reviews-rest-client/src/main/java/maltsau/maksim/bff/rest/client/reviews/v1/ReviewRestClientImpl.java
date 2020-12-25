@@ -3,11 +3,16 @@ package maltsau.maksim.bff.rest.client.reviews.v1;
 import com.google.common.collect.Lists;
 import maltsau.maksim.bff.rest.client.reviews.dto.EquipmentReview;
 import org.springframework.stereotype.Component;
+import maltsau.maksim.bff.rest.client.core.SyncRestClient;
 
 import java.util.List;
 
 @Component
-public class ReviewRestClientImpl implements ReviewsRestClient {
+public class ReviewRestClientImpl extends SyncRestClient implements ReviewsRestClient {
+    public ReviewRestClientImpl() {
+        super();
+    }
+
     @Override
     public List<EquipmentReview> getEquipmentReviews() {
         return Lists.newArrayList(
