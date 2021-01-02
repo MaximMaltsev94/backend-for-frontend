@@ -47,7 +47,7 @@ public class ReviewAggregatorResourceV1 {
 
         Map<Long, Double> equipmentRatingsMap = equipmentReviews.stream()
                 .collect(Collectors.groupingBy(EquipmentReview::getEquipmentId,
-                        Collectors.averagingInt(EquipmentReview::getStartRating)));
+                        Collectors.averagingInt(EquipmentReview::getStarRating)));
 
         return equipments.stream()
                 .parallel()

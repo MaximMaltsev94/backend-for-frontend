@@ -19,9 +19,11 @@ import java.util.Set;
 @Import({
         ReviewsRestClientSpringConfig.class,
         EquipmentRestClientSpringConfig.class})
-@PropertySource(value = {"classpath*:app-default.properties",
-        "file:///bff-config/backend-for-fontend-rest-web.properties"},
-        ignoreResourceNotFound = true)
+@PropertySources({
+        @PropertySource("classpath:app-default.properties"),
+        @PropertySource(value = "file:/bff-config/backend-for-frontend-rest-web.properties",
+                ignoreResourceNotFound = true)
+})
 public class BFFRestWebSpringRootConfig {
 
     @Bean
@@ -45,7 +47,7 @@ public class BFFRestWebSpringRootConfig {
         propertyOverrideConfigurer.setIgnoreResourceNotFound(true);
         propertyOverrideConfigurer.setLocations(
                 new ClassPathResource("app-default.properties"),
-                new FileSystemResource("file:///bff-config/backend-for-fontend-rest-web.properties")
+                new FileSystemResource("/bff-config/backend-for-frontend-rest-web.properties")
         );
         return propertyOverrideConfigurer;
     }
