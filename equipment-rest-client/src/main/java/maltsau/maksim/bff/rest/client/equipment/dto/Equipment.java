@@ -8,6 +8,9 @@ public class Equipment {
     private String description;
     private Map<String, String> properties;
 
+    public Equipment() {
+        //default constructor
+    }
 
     public Equipment(Long id, String title, String description, Map<String, String> properties) {
         this.id = id;

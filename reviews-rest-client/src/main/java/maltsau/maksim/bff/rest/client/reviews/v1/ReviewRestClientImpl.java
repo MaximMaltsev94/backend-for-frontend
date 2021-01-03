@@ -22,7 +22,7 @@ public class ReviewRestClientImpl implements ReviewsRestClient {
 
     @Override
     public List<EquipmentReview> getEquipmentReviews() {
-        return restClientTemplate.getList("/api/equipmentreviews/v1/", Collections.emptyMap(),
+        return restClientTemplate.getList("/api/reviews/v1/", Collections.emptyMap(),
                 EquipmentReview.class);
     }
 }

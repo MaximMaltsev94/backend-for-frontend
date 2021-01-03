@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/equipmentreviews/v1/"
+    "url": "/api/reviews/v1/"
   },
   "response": {
     "status": 200,
