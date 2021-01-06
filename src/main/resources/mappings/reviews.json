@@ -5,6 +5,11 @@
   },
   "response": {
     "status": 200,
+    "delayDistribution": {
+      "type": "uniform",
+      "lower": 200,
+      "upper": 500
+    },
     "headers": {
       "Content-Type": "application/json"
     },

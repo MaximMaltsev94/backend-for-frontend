@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Future;
 
 @Component
 public class ReviewRestClientImpl implements ReviewsRestClient {
@@ -21,8 +22,8 @@ public class ReviewRestClientImpl implements ReviewsRestClient {
     }
 
     @Override
-    public List<EquipmentReview> getEquipmentReviews() {
-        return restClientTemplate.getList("/api/reviews/v1/", Collections.emptyMap(),
+    public Future<List<EquipmentReview>> getEquipmentReviewsAsync() {
+        return restClientTemplate.getListAsync("/api/reviews/v1/", Collections.emptyMap(),
                 EquipmentReview.class);
     }
 }

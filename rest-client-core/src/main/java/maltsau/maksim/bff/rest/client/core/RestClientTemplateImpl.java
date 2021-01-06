@@ -3,7 +3,7 @@ package maltsau.maksim.bff.rest.client.core;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import maltsau.maksim.bff.rest.client.core.config.ConnectionConfig;
-import org.apache.commons.lang3.NotImplementedException;
+import org.apache.commons.lang3.concurrent.ConcurrentUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.scheduling.annotation.Async;
 
 import java.io.IOException;
 import java.util.List;
@@ -54,13 +55,15 @@ public class RestClientTemplateImpl implements RestClientTemplate {
     }
 
     @Override
+    @Async
     public <T> Future<T> getAsync(String path, Map<String, String> params, Class<T> tClass) {
-        throw new NotImplementedException("getAsync rest-client method is not implemented yet");
+        return ConcurrentUtils.constantFuture(get(path, params, tClass));
     }
 
     @Override
-    public <T> Future<T> getListAsync(String path, Map<String, String> params, Class<T> targetClass) {
-        return null;
+    @Async
+    public <T> Future<List<T>> getListAsync(String path, Map<String, String> params, Class<T> targetClass) {
+        return ConcurrentUtils.constantFuture(getList(path, params, targetClass));
     }
 
     private HttpResponse executeRequest(String methodName, String requestPath, Map<String, String> requestParams) {

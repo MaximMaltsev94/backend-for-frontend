@@ -9,5 +9,5 @@ public interface RestClientTemplate {
     <T> List<T> getList(String path, Map<String, String> params, Class<T> targetClass);
 
     <T> Future<T> getAsync(String path, Map<String, String> params, Class<T> targetClass);
-    <T> Future<T> getListAsync(String path, Map<String, String> params, Class<T> targetClass);
+    <T> Future<List<T>> getListAsync(String path, Map<String, String> params, Class<T> targetClass);
 }

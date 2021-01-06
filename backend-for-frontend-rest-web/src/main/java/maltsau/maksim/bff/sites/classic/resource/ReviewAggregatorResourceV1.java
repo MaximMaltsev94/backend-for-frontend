@@ -1,6 +1,7 @@
 package maltsau.maksim.bff.sites.classic.resource;
 
 
+import com.google.common.util.concurrent.Futures;
 import maltsau.maksim.bff.rest.client.equipment.dto.Equipment;
 import maltsau.maksim.bff.rest.client.equipment.v1.EquipmentRestClient;
 import maltsau.maksim.bff.rest.client.reviews.dto.EquipmentReview;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 @RestController
@@ -42,10 +44,10 @@ public class ReviewAggregatorResourceV1 {
 
     @GetMapping("/pages/{pageNum}/")
     public List<EquipmentRatings> getPage(@PathVariable("pageNum") Integer pageNum) {
-        List<EquipmentReview> equipmentReviews = reviewsRestClient.getEquipmentReviews();
+        Future<List<EquipmentReview>> equipmentReviewsFuture = reviewsRestClient.getEquipmentReviewsAsync();
         List<Equipment> equipments = equipmentRestClient.getEquipments();
 
-        Map<Long, Double> equipmentRatingsMap = equipmentReviews.stream()
+        Map<Long, Double> equipmentRatingsMap = Futures.getUnchecked(equipmentReviewsFuture).stream()
                 .collect(Collectors.groupingBy(EquipmentReview::getEquipmentId,
                         Collectors.averagingInt(EquipmentReview::getStarRating)));
 
@@ -56,4 +58,6 @@ public class ReviewAggregatorResourceV1 {
                 .peek(e -> e.setAverageStartRating(equipmentRatingsMap.get(e.getId())))
                 .collect(Collectors.toList());
     }
+
+
 }
