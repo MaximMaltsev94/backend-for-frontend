@@ -1,0 +1,67 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/equipment/v1/"
+  },
+  "response": {
+    "status": 200,
+    "delayDistribution": {
+      "type": "uniform",
+      "lower": 200,
+      "upper": 500
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": [
+      {
+        "id": 1,
+        "title": "Ryzen 5600x",
+        "description": "ZEN 3 processor",
+        "properties": {
+          "TPD": "65W"
+        }
+      },
+      {
+        "id": 2,
+        "title": "Ryzen 3600x",
+        "description": "ZEN 3 processor",
+        "properties": {
+          "TPD": "95W"
+        }
+      },
+      {
+        "id": 3,
+        "title": "Ryzen 2600",
+        "description": "ZEN 3 processor",
+        "properties": {
+          "TPD": "65W"
+        }
+      },
+      {
+        "id": 4,
+        "title": "Ryzen 5800x",
+        "description": "ZEN 3 processor",
+        "properties": {
+          "TPD": "105W"
+        }
+      },
+      {
+        "id": 5,
+        "title": "Ryzen 3700x",
+        "description": "ZEN 3 processor",
+        "properties": {
+          "TPD": "65W"
+        }
+      },
+      {
+        "id": 6,
+        "title": "Ryzen 5950x",
+        "description": "ZEN 3 processor",
+        "properties": {
+          "TPD": "105W"
+        }
+      }
+    ]
+  }
+}

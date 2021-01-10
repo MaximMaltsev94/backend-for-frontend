@@ -4,13 +4,17 @@ public class EquipmentReview {
     private Long id;
     private Long equipmentId;
     private String authorName;
-    private Integer startRating;
+    private Integer starRating;
 
-    public EquipmentReview(Long id, Long equipmentId, String authorName, Integer startRating) {
+    public EquipmentReview() {
+        //default constructor
+    }
+
+    public EquipmentReview(Long id, Long equipmentId, String authorName, Integer starRating) {
         this.id = id;
         this.equipmentId = equipmentId;
         this.authorName = authorName;
-        this.startRating = startRating;
+        this.starRating = starRating;
     }
 
     public Long getId() {
@@ -25,7 +29,7 @@ public class EquipmentReview {
         return authorName;
     }
 
-    public Integer getStartRating() {
-        return startRating;
+    public Integer getStarRating() {
+        return starRating;
     }
 }

@@ -1,0 +1,79 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/reviews/v1/"
+  },
+  "response": {
+    "status": 200,
+    "delayDistribution": {
+      "type": "uniform",
+      "lower": 200,
+      "upper": 500
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": [
+      {
+        "id": 1,
+        "equipmentId": 1,
+        "authorName": "user01",
+        "starRating": 5
+      },
+      {
+        "id": 2,
+        "equipmentId": 2,
+        "authorName": "user02",
+        "starRating": 5
+      },
+      {
+        "id": 3,
+        "equipmentId": 3,
+        "authorName": "user03",
+        "starRating": 5
+      },
+      {
+        "id": 4,
+        "equipmentId": 4,
+        "authorName": "user04",
+        "starRating": 5
+      },
+      {
+        "id": 5,
+        "equipmentId": 5,
+        "authorName": "user05",
+        "starRating": 5
+      },
+      {
+        "id": 6,
+        "equipmentId": 1,
+        "authorName": "user06",
+        "starRating": 1
+      },
+      {
+        "id": 7,
+        "equipmentId": 2,
+        "authorName": "user07",
+        "starRating": 2
+      },
+      {
+        "id": 8,
+        "equipmentId": 3,
+        "authorName": "user08",
+        "starRating": 3
+      },
+      {
+        "id": 9,
+        "equipmentId": 4,
+        "authorName": "user09",
+        "starRating": 4
+      },
+      {
+        "id": 10,
+        "equipmentId": 5,
+        "authorName": "user10",
+        "starRating": 5
+      }
+    ]
+  }
+}

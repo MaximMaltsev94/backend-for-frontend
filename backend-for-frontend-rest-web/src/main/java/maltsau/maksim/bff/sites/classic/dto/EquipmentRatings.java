@@ -11,6 +11,10 @@ public class EquipmentRatings {
 
     private Double averageStartRating;
 
+    public EquipmentRatings() {
+        //default constructor
+    }
+
     public EquipmentRatings(Long id, String title, String description, Map<String, String> properties, Double averageStartRating) {
         this.id = id;
         this.title = title;
