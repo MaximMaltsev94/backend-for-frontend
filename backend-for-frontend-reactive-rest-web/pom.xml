@@ -10,7 +10,59 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>backend-for-frontend-reactive-rest-web</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
+    <properties>
+        <spring-boot-starter-webflux.version>2.3.7.RELEASE</spring-boot-starter-webflux.version>
+        <equipment-rest-client.version>[1.0-SNAPSHOT,2.0)</equipment-rest-client.version>
+        <reviews-rest-client.version>[1.0-SNAPSHOT,2.0)</reviews-rest-client.version>
+        <logging-core.version>[1.0-SNAPSHOT,2.0)</logging-core.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${spring-boot-starter-webflux.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>maltsau.maksim.backend-for-frontend</groupId>
+            <artifactId>equipment-rest-client</artifactId>
+            <version>${equipment-rest-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>maltsau.maksim.backend-for-frontend</groupId>
+            <artifactId>reviews-rest-client</artifactId>
+            <version>${reviews-rest-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>maltsau.maksim.backend-for-frontend</groupId>
+            <artifactId>logging-core</artifactId>
+            <version>${logging-core.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>spring-boot</classifier>
+                            <mainClass>
+                                maltsau.maksim.bff.sites.reactive.SpringReactiveBffRestWebApplication
+                            </mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
