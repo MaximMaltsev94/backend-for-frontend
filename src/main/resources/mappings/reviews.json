@@ -6,9 +6,9 @@
   "response": {
     "status": 200,
     "delayDistribution": {
-      "type": "uniform",
-      "lower": 200,
-      "upper": 500
+      "type": "lognormal",
+      "median": 30,
+      "sigma": 0.5
     },
     "headers": {
       "Content-Type": "application/json"
