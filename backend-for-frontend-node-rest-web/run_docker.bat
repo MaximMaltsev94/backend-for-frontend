@@ -5,4 +5,4 @@ docker run --rm ^
     -m 8192m ^
     --cpus 2 ^
     -e JAVA_XMX=6144m ^
-    -it backend-for-frontend-reactive-rest-web:latest
+    -it backend-for-frontend-node-rest-web:latest
