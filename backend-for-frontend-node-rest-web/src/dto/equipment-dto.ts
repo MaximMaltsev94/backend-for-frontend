@@ -1,5 +1,3 @@
-
-
 export default interface EquipmentDto {
   id: string
   title: string

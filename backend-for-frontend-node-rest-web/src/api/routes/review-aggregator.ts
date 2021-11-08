@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import ReviewAggregatorService from "../../services/reviewAggregatorService";
+import ReviewAggregatorService from "../../services/review-aggregator-service";
 const route = Router();
 
 export default (app: Router) => {
