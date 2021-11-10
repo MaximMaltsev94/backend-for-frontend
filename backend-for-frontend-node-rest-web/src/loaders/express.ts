@@ -1,18 +1,18 @@
-import express from 'express'
+import express from 'express';
 
-import routes from '../api'
-import config from '../config'
+import routes from '../api';
+import config from '../config';
 
 export default ({ app }: { app: express.Application }) => {
   app.get('/healthcheck', (req, res) => {
     res.status(200).end();
-  })
+  });
   app.head('/healthcheck', (req, res) => {
     res.status(200).end();
-  })
+  });
 
   app.use(express.json());
-  app.use(config.api.prefix, routes())
+  app.use(config.api.prefix, routes());
 
   /// catch 404 and forward to error handler
   app.use((req, res, next) => {
@@ -27,10 +27,7 @@ export default ({ app }: { app: express.Application }) => {
      * Handle 401 thrown by express-jwt library
      */
     if (err.name === 'UnauthorizedError') {
-      return res
-        .status(err.status)
-        .send({ message: err.message })
-        .end();
+      return res.status(err.status).send({ message: err.message }).end();
     }
     return next(err);
   });
@@ -42,4 +39,4 @@ export default ({ app }: { app: express.Application }) => {
       },
     });
   });
-}
+};

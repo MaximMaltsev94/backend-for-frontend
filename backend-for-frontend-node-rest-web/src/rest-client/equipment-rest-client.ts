@@ -1,9 +1,8 @@
-import EquipmentDto from "../dto/equipment-dto";
-import CommonRestClient from "./common-rest-client";
-
+import EquipmentDto from '../dto/equipment-dto';
+import CommonRestClient from './common-rest-client';
 
 export default class EquipmentRestClient {
-  private commonRestClient: CommonRestClient
+  private commonRestClient: CommonRestClient;
   constructor() {
     this.commonRestClient = new CommonRestClient();
   }

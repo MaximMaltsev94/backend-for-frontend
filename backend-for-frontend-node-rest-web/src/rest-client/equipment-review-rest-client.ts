@@ -1,9 +1,8 @@
-import EquipmentReviewDto from "../dto/equipment-review-dto";
-import CommonRestClient from "./common-rest-client";
-
+import EquipmentReviewDto from '../dto/equipment-review-dto';
+import CommonRestClient from './common-rest-client';
 
 export default class EquipmentReviewRestClient {
-  private commonRestClient: CommonRestClient
+  private commonRestClient: CommonRestClient;
   constructor() {
     this.commonRestClient = new CommonRestClient();
   }
