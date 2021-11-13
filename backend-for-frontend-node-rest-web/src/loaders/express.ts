@@ -3,7 +3,7 @@ import express from 'express';
 import routes from '../api';
 import config from '../config';
 
-export default ({ app }: { app: express.Application }) => {
+export default ({ app }: { app: express.Application }): void => {
   app.get('/healthcheck', (req, res) => {
     res.status(200).end();
   });
