@@ -6,6 +6,7 @@ import maltsau.maksim.bff.rest.client.equipment.dto.Equipment;
 import maltsau.maksim.bff.rest.client.equipment.v1.EquipmentRestClient;
 import maltsau.maksim.bff.rest.client.reviews.dto.EquipmentReview;
 import maltsau.maksim.bff.rest.client.reviews.v1.ReviewsRestClient;
+import maltsau.maksim.bff.sites.classic.aop.ExecutionTimeLoggable;
 import maltsau.maksim.bff.sites.classic.dto.EquipmentRatings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
@@ -43,6 +44,7 @@ public class ReviewAggregatorResourceV1 {
     }
 
     @GetMapping("/pages/{pageNum}/")
+    @ExecutionTimeLoggable
     public List<EquipmentRatings> getPage(@PathVariable("pageNum") Integer pageNum) {
         Future<List<EquipmentReview>> equipmentReviewsFuture = reviewsRestClient.getEquipmentReviewsAsync();
         List<Equipment> equipments = equipmentRestClient.getEquipments();

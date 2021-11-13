@@ -15,7 +15,10 @@ import org.springframework.core.io.FileSystemResource;
 import java.util.Set;
 
 @Configuration
-@ComponentScan("maltsau.maksim.bff.sites.classic.dto,maltsau.maksim.bff.sites.classic.resource")
+@ComponentScan(basePackages = {
+        "maltsau.maksim.bff.sites.classic.dto",
+        "maltsau.maksim.bff.sites.classic.resource",
+        "maltsau.maksim.bff.sites.classic.aop"})
 @Import({
         ReviewsRestClientSpringConfig.class,
         EquipmentRestClientSpringConfig.class})
