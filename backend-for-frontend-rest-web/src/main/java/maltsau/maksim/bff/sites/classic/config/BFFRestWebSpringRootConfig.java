@@ -1,9 +1,12 @@
 package maltsau.maksim.bff.sites.classic.config;
 
 import com.google.common.collect.Sets;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import maltsau.maksim.bff.rest.client.equipment.config.EquipmentRestClientSpringConfig;
 import maltsau.maksim.bff.rest.client.reviews.config.ReviewsRestClientSpringConfig;
 import maltsau.maksim.bff.sites.classic.converter.EquipmentRatingsDtoConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertyOverrideConfigurer;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ConversionServiceFactoryBean;
@@ -11,6 +14,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.Set;
 
@@ -18,6 +22,8 @@ import java.util.Set;
 @ComponentScan(basePackages = {
         "maltsau.maksim.bff.sites.classic.dto",
         "maltsau.maksim.bff.sites.classic.resource",
+        "maltsau.maksim.bff.sites.classic.repository",
+        "maltsau.maksim.bff.sites.classic.service",
         "maltsau.maksim.bff.sites.classic.aop"})
 @Import({
         ReviewsRestClientSpringConfig.class,
@@ -53,5 +59,16 @@ public class BFFRestWebSpringRootConfig {
                 new FileSystemResource("/bff-config/backend-for-frontend-rest-web.properties")
         );
         return propertyOverrideConfigurer;
+    }
+
+    @Bean
+    public MongoClient mongoClient(@Value("${mongodb.connectionString}") String mongodbConnectionString) {
+        return MongoClients.create(mongodbConnectionString);
+    }
+
+
+    @Bean
+    public MongoTemplate mongoTemplate(MongoClient mongoClient) {
+        return new MongoTemplate(mongoClient, "equipment");
     }
 }
