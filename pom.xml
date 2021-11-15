@@ -18,7 +18,7 @@
     </modules>
 
     <properties>
-        <spring.version>5.2.12.RELEASE</spring.version>
+        <spring.version>5.3.13</spring.version>
         <aspectj.version>1.9.7</aspectj.version>
         <commons.lang.version>3.8.1</commons.lang.version>
         <commons.collections.version>4.1</commons.collections.version>
