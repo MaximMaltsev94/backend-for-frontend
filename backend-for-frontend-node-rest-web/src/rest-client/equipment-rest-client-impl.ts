@@ -1,4 +1,4 @@
-import { TYPES } from '@/ioc-di/types';
+import { TYPES } from '../ioc-di/types';
 import { inject, injectable } from 'inversify';
 import EquipmentDto from '../dto/equipment-dto';
 import CommonRestClient from './common-rest-client';
