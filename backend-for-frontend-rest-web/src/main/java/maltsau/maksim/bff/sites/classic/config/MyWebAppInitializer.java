@@ -1,10 +1,10 @@
 package maltsau.maksim.bff.sites.classic.config;
 
-import com.google.common.base.Charsets;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import java.nio.charset.StandardCharsets;
 
 public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
@@ -31,7 +31,7 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
     @Override
     protected Filter[] getServletFilters() {
         return new Filter[]{
-                new CharacterEncodingFilter(Charsets.UTF_8.displayName())
+                new CharacterEncodingFilter(StandardCharsets.UTF_8.displayName())
         };
     }
 }

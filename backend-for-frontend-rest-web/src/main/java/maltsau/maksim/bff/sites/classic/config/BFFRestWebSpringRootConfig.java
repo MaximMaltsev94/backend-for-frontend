@@ -8,7 +8,12 @@ import maltsau.maksim.bff.rest.client.reviews.config.ReviewsRestClientSpringConf
 import maltsau.maksim.bff.sites.classic.converter.EquipmentRatingsDtoConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertyOverrideConfigurer;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
@@ -16,6 +21,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.Random;
 import java.util.Set;
 
 @Configuration
@@ -24,6 +30,7 @@ import java.util.Set;
         "maltsau.maksim.bff.sites.classic.resource",
         "maltsau.maksim.bff.sites.classic.repository",
         "maltsau.maksim.bff.sites.classic.service",
+        "maltsau.maksim.bff.sites.classic.encryption",
         "maltsau.maksim.bff.sites.classic.aop"})
 @Import({
         ReviewsRestClientSpringConfig.class,
@@ -66,9 +73,14 @@ public class BFFRestWebSpringRootConfig {
         return MongoClients.create(mongodbConnectionString);
     }
 
-
     @Bean
     public MongoTemplate mongoTemplate(MongoClient mongoClient) {
         return new MongoTemplate(mongoClient, "equipment");
     }
+
+    @Bean
+    public Random randomStringToEncode() {
+        return new Random(System.currentTimeMillis());
+    }
+
 }
