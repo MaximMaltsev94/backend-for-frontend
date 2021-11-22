@@ -13,6 +13,8 @@ import EquipmentService from '../services/equipment-service';
 import EquipmentServiceImpl from '../services/equipment-service-impl';
 import EquipmentRepositoryImpl from '../repository/equipment-repository-impl';
 import EquipmentRepository from '../repository/equipment-repository';
+import SortServiceImpl from '../services/sort-service-impl';
+import SortService from '../services/sort-service';
 
 const inversifyContainer = new Container();
 inversifyContainer.bind<CommonRestClient>(TYPES.CommonRestClient).to(CommonRestClientImpl);
@@ -21,5 +23,6 @@ inversifyContainer.bind<EquipmentReviewRestClient>(TYPES.EquipmentReviewRestClie
 inversifyContainer.bind<ReviewAggregatorService>(TYPES.ReviewAggregatorService).to(ReviewAggregatorServiceImpl);
 inversifyContainer.bind<EquipmentService>(TYPES.EquipmentService).to(EquipmentServiceImpl);
 inversifyContainer.bind<EquipmentRepository>(TYPES.EquipmentRepository).to(EquipmentRepositoryImpl);
+inversifyContainer.bind<SortService>(TYPES.SortService).to(SortServiceImpl);
 
 export { inversifyContainer };
