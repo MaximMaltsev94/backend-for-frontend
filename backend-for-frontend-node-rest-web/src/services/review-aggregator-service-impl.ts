@@ -8,18 +8,12 @@ import { TYPES } from '../ioc-di/types';
 
 @injectable()
 export default class ReviewAggregatorServiceImpl implements ReviewAggregatorService {
-  private equipmentRestClient: EquipmentRestClientImpl;
-  private equipmentReviewRestClient: EquipmentReviewRestClientImpl;
-
   constructor(
-    @inject(TYPES.EquipmentRestClient) equipmentRestClient: EquipmentRestClientImpl,
-    @inject(TYPES.EquipmentReviewRestClient) equipmentReviewRestClient: EquipmentReviewRestClientImpl,
-  ) {
-    this.equipmentRestClient = equipmentRestClient;
-    this.equipmentReviewRestClient = equipmentReviewRestClient;
-  }
+    @inject(TYPES.EquipmentRestClient) private equipmentRestClient: EquipmentRestClientImpl,
+    @inject(TYPES.EquipmentReviewRestClient) private equipmentReviewRestClient: EquipmentReviewRestClientImpl,
+  ) {}
 
-  public getEquipmentAverageRating(): Promise<EquipmentAverageRatingsDto[]> {
+  public async getEquipmentAverageRating(): Promise<EquipmentAverageRatingsDto[]> {
     const equipmentAverageRating = this.equipmentReviewRestClient
       .getEquipmentReviews()
       .then(this.mapEquipmentReviewsToStarsRating)

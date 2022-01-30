@@ -10,16 +10,11 @@ export default class CommonRestClientImpl implements CommonRestClient {
     this.host = config.equipmentRestClient.host;
   }
 
-  public executeGet = <T>(url: string): Promise<T> => {
-    return new Promise((resolve, reject) => {
-      fetch(`${this.host}${url}`)
-        .then(res => {
-          if (res.status > 200) {
-            throw `non-200 : ${res.status}`;
-          }
-          resolve(res.json());
-        })
-        .catch(reject);
-    });
+  public executeGet = async <T>(url: string): Promise<T> => {
+    const res = await fetch(`${this.host}${url}`);
+    if (res.status > 200) {
+      Promise.reject(`non-200 : ${res.status}`);
+    }
+    return res.json();
   };
 }

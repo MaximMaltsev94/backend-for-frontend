@@ -6,17 +6,9 @@ import { mongodbEquipmentCollections } from './mongodb';
 
 @injectable()
 export default class EquipmentRepositoryImpl implements EquipmentRepository {
-  findAllModels(): Promise<EquipmentModel[]> {
-    return new Promise((resolve, reject) => {
-      mongodbEquipmentCollections.models
-        .find()
-        .toArray()
-        .then(documents => {
-          return documents.map(this.mapToEquipmentModel);
-        })
-        .then(resolve)
-        .catch(reject);
-    });
+  async findAllModels(): Promise<EquipmentModel[]> {
+    const documents: mongodb.Document[] = await mongodbEquipmentCollections.models.find().toArray();
+    return documents.map(this.mapToEquipmentModel);
   }
 
   private mapToEquipmentModel(document: mongodb.Document): EquipmentModel {

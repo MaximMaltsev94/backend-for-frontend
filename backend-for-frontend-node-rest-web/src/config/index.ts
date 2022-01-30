@@ -9,6 +9,6 @@ export default {
   equipmentReviewsRestClient: {
     host: 'http://192.168.100.12:8081',
   },
-  mongodbConnectionString: 'mongodb://localhost:27017/',
+  mongodbConnectionString: 'mongodb://192.168.100.12:27017/',
   mongodbDatabseName: 'equipment',
 };

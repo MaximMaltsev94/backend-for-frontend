@@ -4,6 +4,7 @@ import routes from '../api';
 import config from '../config';
 
 export default ({ app }: { app: express.Application }): void => {
+  app.use(require('express-status-monitor')());
   app.get('/healthcheck', (req, res) => {
     res.status(200).end();
   });
